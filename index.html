@@ -1,16 +1,17 @@
 <html>
 	<head>
 		<title>Hello Trello</title>
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
 		<h1>Swim lanes & to-do cards</h1>
 		<script src="trello.js"></script>
 		
-		<form onsubmit="addLane()">
+		<div>
 			New lane (title): <input type = "text" id="laneTitle" name="swimLane">
-			<input type="submit" value = "+">
-		</form>
-		
+			<button type="button" onclick="addLane()">+</button>
+		</div>
+
 		<div id="pool">
 
 		</div>

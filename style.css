@@ -1,8 +1,13 @@
-#display{
+#pool{
     display:flex;
     overflow-x:scroll;
+    border: solid 2px black;
+    background-color: grey;
+    width: 99%;
+    height: 98vh;
 }
 .lane {
+    height: auto;
     min-width: 18rem;
     display: block;
     float: left;
