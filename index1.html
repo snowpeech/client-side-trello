@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>hello Trello</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Swim lanes and To-Do Lists </h1>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="indexeddb1.js"></script>
+<!-- 	<form id="new-guest" method="POST" action="#">
+      <input type="text" name="new-guest" id="new-guest" placeholder="Enter a todo item..." required>
+    </form>
+ -->
+ 	<div class="background">
+ 		<div class="textbox">
+ 			<h2> Create a new lane </h2>
+		    <div>
+				<input type="text" id="laneTitle" placeholder="New Task"/>
+			</div>
+
+			<div>
+				<input type="button" value="Add Task" id="btn" class="add" />
+				
+			</div>
+		</div>
+
+		<div class="textbox">
+			<h2>Things to do:</h2>
+			<div id="display">
+				<!-- this is where the javascript results will show -->
+			</div>
+		</div>
+
+    </div> <!-- end background image -->
+    
+    
+		<div class = "lane">
+			<h6>sample lane  <button class ="kill" onclick = "remove(this)">X</button> </h6>
+			
+			<div class = "task">
+				<form onsubmit="newCard()">
+						New card: <input type="text" name="cardTask">					
+					<input type="submit" value="+">
+				</form>
+			</div>
+			
+		</div> <!-- end lane-->
+	
+		<!-- this is for the add button to work -->
+		<script>
+			//wire up click event to add function
+			document.querySelector("#btn").addEventListener("click", add);
+			</script>
+
+</body>
+</html>

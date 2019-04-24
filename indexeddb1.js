@@ -73,7 +73,6 @@ function readAll() {
          cursor.continue();
       }
    };
-
    //need to add stuff to read cards
 }
 

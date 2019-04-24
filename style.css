@@ -1,0 +1,29 @@
+#display{
+    display:flex;
+    overflow-x:scroll;
+}
+.lane {
+    min-width: 18rem;
+    display: block;
+    float: left;
+    border: 1px solid black;
+    margin: 5px;
+    flex-wrap: nowrap;
+	justify-content: space-between;
+}
+
+.card {
+    flex-direction: row;
+}
+
+.kill {
+	border-radius: 2px; 
+	padding: 5px;
+	margin: 20px 10px;
+	/* background-color: var(--accent2); */
+    color: black;
+}
+
+.task {
+    display: block;
+}
