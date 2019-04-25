@@ -6,6 +6,7 @@ var cardID = 0;
 function addLane(){
     
     var laneName = document.getElementById("laneTitle").value;
+    console.log(laneName)
 
     // laneID ++;
     // var id = "swimlane" + laneID;
@@ -30,28 +31,27 @@ function addLane(){
 
     // btn.addEventListener("click", addCard);
     
-
-    var list_name = document.getElementById(laneName);
-    
     var list = document.createElement('div');
     list.setAttribute('class', 'list');
-    list.innerHTML = `<div>${list_name}</div><div id="card-container-${laneID}"></div><a type="button" id="lane-${laneID}" onclick="addCard(${laneID})" class="button-link">Add another card</a>`;
+    //list.innerHTML = `<div class="list-title">${laneName}</div> <div class = "card" id="card-container-${laneID}"></div> <a type="button" id="lane-${laneID}" onclick="addCard(${laneID})" class="button-link">Add another card</a>`; //this is the current
+
+    list.innerHTML = `<div class="list-title">${laneName}</div><div class = "card" id="card-container-${laneID}"></div> New Card: <input type = "text" id="lanecard${laneID}-${cardID}" name="cardtxt" placeholder="Add a card"> <button type="button" onclick="addCard(${laneID},${cardID})">+</button>`;
     
-    list_name = '';
+    document.getElementById("laneTitle").value="";
     var list_container = document.querySelector("#pool");
-    list_container.prepend(list);
+    list_container.prepend(list);  //adds to top of list
 }
 
 //add a card to swimlane
-function addCard(laneID) {
+function addCard(laneID,cardID) {
     cardID++;
-
+    //var txtTitle = document.getElementById("lanecard`${laneID}`-`${cardID}`").value; //explain this later
     //get the swimlane id from the button that was clicked
     // let slid = this.dataset.laneId; 
 
-    var txtTitle = prompt("Name your card:");
-    var txtDescription = prompt("Description of your task:");
-
+    var txtTitle = "placeholder card:" + cardID +  laneID; 
+    //var txtTitle = prompt("Name your card:"); // need to pull this somewhere else
+    
     //	add a name to the card
     //	add a description to the card
 
@@ -62,11 +62,7 @@ function addCard(laneID) {
     var title = document.createElement("P");
     title.innerHTML = txtTitle;
 
-    var desc = document.createElement("P");
-    desc.innerHTML = txtDescription;
-
     div.appendChild(title);
-    div.appendChild(desc);
 
     console.log(laneID)
 

@@ -2,7 +2,7 @@
     display:flex;
     overflow-x:scroll;
     border: solid 2px black;
-    background-color: grey;
+    background-color: rgb(187, 201, 226);
     width: 99%;
     height: 98vh;
 }
@@ -18,7 +18,12 @@
 }
 
 .card {
-    flex-direction: row;
+    /* flex-direction: row; */
+    border: 1px solid darkolivegreen;
+}
+
+.list-title{
+    font-weight: bold;
 }
 
 .kill {
