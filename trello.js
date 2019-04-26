@@ -4,17 +4,15 @@ var laneID = 0;
 var cardID = 0;
 
 var laneBtn = document.getElementById("laneTitle");
-// document.addEventListener("keyup", function(event) {
-laneBtn.addEventListener("keyup", function(event) { // use above line to make a page listener. need to ID which button to click though (parent? this?)
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   console.log("register key")
-   document.getElementById("newLane").click();
-  }
-});
 
-
-
+//lots of room for improvement
+function enterKey() { 
+    if (event.keyCode === 13) {
+     event.preventDefault();
+     console.log("register key")
+     document.getElementById("newLane").click();
+    }
+}
 
 function addLane(){
     
