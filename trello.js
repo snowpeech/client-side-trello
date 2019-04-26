@@ -14,6 +14,7 @@ function enterKey() {
     }
 }
 
+
 function addLane(){
     
     var laneName = document.getElementById("laneTitle").value;
@@ -24,23 +25,26 @@ function addLane(){
     lane.setAttribute('class', 'list');
     //list.innerHTML = `<div class="list-title">${laneName}</div> <div class = "card" id="card-container-${laneID}"></div> <a type="button" id="lane-${laneID}" onclick="addCard(${laneID})" class="button-link">Add another card</a>`; //this is the current
 
-    lane.innerHTML = `<div class="list-title">${laneName}</div><div class = "card" id="card-container-${laneID}"></div> New Card: <input type = "text" id="lanecard${laneID}-${cardID}" name="cardtxt" placeholder="Add a card"> <button type="button" onclick="addCard(${laneID},${cardID})">+</button>`;
-    
+    //lane.innerHTML = `<div class="list-title">${laneName}</div><div class = "card" id="card-container-${laneID}"></div> New Card: <input type = "text" id="lanecard${laneID}-${cardID}" name="cardtxt" placeholder="Add a card"> <button type="button" onclick="addCard(${laneID},${cardID})">+</button>`;
+    lane.innerHTML = `<div class ="listTitle">${laneName}</div><div class = "card" id="card-container-${laneID}"><input type = "text" id="lanecard${laneID}" name="cardtxt" placeholder="Add a card"><button type="button" onclick="addCard(${laneID})">+</button></div>`
+
     document.getElementById("laneTitle").value="";
     var list_container = document.querySelector("#pool");
     list_container.prepend(lane);  //adds to top of list
-}
+    }
 
 
 //add a card to swimlane
-function addCard(laneID,cardID) {
-    cardID++; //this doesn't seem to work probably not finding actual cardID to update.
+function addCard(laneID) {
+    
+    cardID++; //this doesn't seem to work probably not finding actual cardID to update. because it lives inside this function and doesn't get returned
 
     //var txtTitle = document.getElementById("lanecard`${laneID}`-`${cardID}`").value; //explain this later
     //get the swimlane id from the button that was clicked
     // let slid = this.dataset.laneId; 
-
-    var txtTitle = "placeholder card:" + cardID +  laneID; 
+    var cardTxt = document.getElementById("lanecard"+laneID).value;
+    var txtTitle = cardTxt; 
+    document.getElementById("lanecard"+laneID).value ="";
     //var txtTitle = prompt("Name your card:"); // need to pull this somewhere else
     
     //	add a name to the card
@@ -49,6 +53,7 @@ function addCard(laneID,cardID) {
     var div = document.createElement("div");
     div.setAttribute("id", "card" + cardID); 
     div.setAttribute("class", "card");
+    div.innerHTML = `<a onclick="deleteCard(this, ${cardID})">Delete</a>`;
 
     var title = document.createElement("P");
     title.innerHTML = txtTitle;
@@ -59,4 +64,10 @@ function addCard(laneID,cardID) {
 
     let swimlane = document.querySelector("#card-container-" + laneID );
     swimlane.appendChild(div);
+    
+    return cardID;
+}
+
+function deleteCard(item, itemID){
+    item.parentElement.style.display = "none";
 }
