@@ -26,7 +26,7 @@ function addLane(){
     //list.innerHTML = `<div class="list-title">${laneName}</div> <div class = "card" id="card-container-${laneID}"></div> <a type="button" id="lane-${laneID}" onclick="addCard(${laneID})" class="button-link">Add another card</a>`; //this is the current
 
     //lane.innerHTML = `<div class="list-title">${laneName}</div><div class = "card" id="card-container-${laneID}"></div> New Card: <input type = "text" id="lanecard${laneID}-${cardID}" name="cardtxt" placeholder="Add a card"> <button type="button" onclick="addCard(${laneID},${cardID})">+</button>`;
-    lane.innerHTML = `<div class ="listTitle">${laneName}</div><div class = "card" id="card-container-${laneID}"><input type = "text" id="lanecard${laneID}" name="cardtxt" placeholder="Add a card"><button type="button" onclick="addCard(${laneID})">+</button></div>`
+    lane.innerHTML = `<div class ="listTitle">${laneName}</div>`+ `<button onclick="deleteCard(this, ${laneID})">x</button>`+ `<div class = "card" id="card-container-${laneID}"><input type = "text" id="lanecard${laneID}" name="cardtxt" placeholder="Add a card"><button type="button" onclick="addCard(${laneID})">+</button></div>`
 
     document.getElementById("laneTitle").value="";
     var list_container = document.querySelector("#pool");
@@ -53,10 +53,11 @@ function addCard(laneID) {
     var div = document.createElement("div");
     div.setAttribute("id", "card" + cardID); 
     div.setAttribute("class", "card");
-    div.innerHTML = `<a onclick="deleteCard(this, ${cardID})">Delete</a>`;
+    
+    //div.innerHTML = `<button onclick="deleteCard(this, ${cardID})">x</button>`;
 
     var title = document.createElement("P");
-    title.innerHTML = txtTitle;
+    title.innerHTML = txtTitle + `<button onclick="deleteCard(this, ${cardID})">x</button>`;
 
     div.appendChild(title);
 
