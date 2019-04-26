@@ -3,12 +3,24 @@ var display = document.getElementById("#pool");
 var laneID = 0;
 var cardID = 0;
 
+var laneBtn = document.getElementById("laneTitle");
+// document.addEventListener("keyup", function(event) {
+laneBtn.addEventListener("keyup", function(event) { // use above line to make a page listener. need to ID which button to click though (parent? this?)
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   console.log("register key")
+   document.getElementById("newLane").click();
+  }
+});
+
+
+
+
 function addLane(){
     
     var laneName = document.getElementById("laneTitle").value;
-    console.log(laneName)
 
-    // laneID ++;
+    laneID ++;
     // var id = "swimlane" + laneID;
 
     // var div = document.createElement("DIV"); 
@@ -42,9 +54,11 @@ function addLane(){
     list_container.prepend(list);  //adds to top of list
 }
 
+
 //add a card to swimlane
 function addCard(laneID,cardID) {
-    cardID++;
+    cardID++; //this doesn't seem to work probably not finding actual cardID to update.
+
     //var txtTitle = document.getElementById("lanecard`${laneID}`-`${cardID}`").value; //explain this later
     //get the swimlane id from the button that was clicked
     // let slid = this.dataset.laneId; 

@@ -5,16 +5,16 @@
 	</head>
 	<body>
 		<h1>Swim lanes & to-do cards</h1>
-		<script src="trello.js"></script>
 		
 		<div>
 			New lane (title): <input type = "text" id="laneTitle" name="swimLane">
-			<button type="button" onclick="addLane()">+</button>
+			<button type="button" id="newLane" onclick="addLane()" onkeyup = "enterKey()">+</button>
 		</div>
-
+		
 		<div id="pool">
-
+			
 		</div>
-
+		
+		<script src="trello.js"></script>
 	</body>
 </html>
