@@ -19,37 +19,16 @@ function addLane(){
     var laneName = document.getElementById("laneTitle").value;
 
     laneID ++;
-    // var id = "swimlane" + laneID;
-
-    // var div = document.createElement("DIV"); 
-    // div.setAttribute("id", id);   
-    // div.setAttribute("class", "lane");
-    // div.innerHTML=`<h5>${laneName}</h5>`;
-
-    // document.querySelector("#pool").appendChild(div);
-    // document.getElementById("laneTitle").value=""; //reset input
-
-    // //create a "add card" button
-    // var btn = document.createElement("INPUT");
-    // btn.setAttribute("type", "button");
-    // btn.setAttribute("value", "Add Card");
-    // btn.setAttribute("id", "lane-" + laneID);
-    // // btn.setAttribute("data-swimlane-id", laneID);
-
-    // var swimlane = document.querySelector("#" + id);
-    // swimlane.appendChild(btn);
-
-    // btn.addEventListener("click", addCard);
     
-    var list = document.createElement('div');
-    list.setAttribute('class', 'list');
+    var lane = document.createElement('div');
+    lane.setAttribute('class', 'list');
     //list.innerHTML = `<div class="list-title">${laneName}</div> <div class = "card" id="card-container-${laneID}"></div> <a type="button" id="lane-${laneID}" onclick="addCard(${laneID})" class="button-link">Add another card</a>`; //this is the current
 
-    list.innerHTML = `<div class="list-title">${laneName}</div><div class = "card" id="card-container-${laneID}"></div> New Card: <input type = "text" id="lanecard${laneID}-${cardID}" name="cardtxt" placeholder="Add a card"> <button type="button" onclick="addCard(${laneID},${cardID})">+</button>`;
+    lane.innerHTML = `<div class="list-title">${laneName}</div><div class = "card" id="card-container-${laneID}"></div> New Card: <input type = "text" id="lanecard${laneID}-${cardID}" name="cardtxt" placeholder="Add a card"> <button type="button" onclick="addCard(${laneID},${cardID})">+</button>`;
     
     document.getElementById("laneTitle").value="";
     var list_container = document.querySelector("#pool");
-    list_container.prepend(list);  //adds to top of list
+    list_container.prepend(lane);  //adds to top of list
 }
 
 
