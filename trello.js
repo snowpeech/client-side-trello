@@ -5,7 +5,7 @@ var cardID = 0;
 
 var laneBtn = document.getElementById("laneTitle");
 
-//lots of room for improvement
+//room for improving "enter" key
 function enterKey() { 
     if (event.keyCode === 13) {
      event.preventDefault();
@@ -23,10 +23,8 @@ function addLane(){
     
     var lane = document.createElement('div');
     lane.setAttribute('class', 'list');
-    //list.innerHTML = `<div class="list-title">${laneName}</div> <div class = "card" id="card-container-${laneID}"></div> <a type="button" id="lane-${laneID}" onclick="addCard(${laneID})" class="button-link">Add another card</a>`; //this is the current
-
-    //lane.innerHTML = `<div class="list-title">${laneName}</div><div class = "card" id="card-container-${laneID}"></div> New Card: <input type = "text" id="lanecard${laneID}-${cardID}" name="cardtxt" placeholder="Add a card"> <button type="button" onclick="addCard(${laneID},${cardID})">+</button>`;
-    lane.innerHTML = `<div class ="listTitle">${laneName}</div>`+ `<button onclick="deleteCard(this, ${laneID})">x</button>`+ `<div class = "card" id="card-container-${laneID}"><input type = "text" id="lanecard${laneID}" name="cardtxt" placeholder="Add a card"><button type="button" onclick="addCard(${laneID})">+</button></div>`
+    lane.innerHTML = `<div class ="listTitle">${laneName}</div>`+ `<button onclick="deleteCard(this, ${laneID})">x</button>`+ `<button id="" onclick="moveLeft()" ><i class="fas fa-caret-left"></i></button>
+    <button id="" onclick="moveRight()" ><i class="fas fa-caret-right"></i></button><div class = "card" id="card-container-${laneID}"><input type = "text" id="lanecard${laneID}" name="cardtxt" placeholder="Add a card"><button type="button" onclick="addCard(${laneID})">+</button></div>`
 
     document.getElementById("laneTitle").value="";
     var list_container = document.querySelector("#pool");
@@ -57,7 +55,7 @@ function addCard(laneID) {
     //div.innerHTML = `<button onclick="deleteCard(this, ${cardID})">x</button>`;
 
     var title = document.createElement("P");
-    title.innerHTML = txtTitle + `<button onclick="deleteCard(this, ${cardID})">x</button>`;
+    title.innerHTML = txtTitle + `<button onclick="deleteCard(this, ${cardID})">x</button> <button onclick="moveUp()" ><i class="fas fa-caret-up"></i></button><button onclick="moveDown()" ><i class="fas fa-caret-down"></i></button>`;
 
     div.appendChild(title);
 
@@ -71,4 +69,21 @@ function addCard(laneID) {
 
 function deleteCard(item, itemID){
     item.parentElement.style.display = "none";
+    item.parentElement.style.border = "0px solid black0"; //why doesn't this make borders disappear?
+}
+
+function moveLeft(){
+    console.log("move left placeholder")
+}
+
+function moveRight(){
+    console.log("move right placeholder")
+}
+
+function moveUp(){
+    console.log("moveup")
+}
+
+function moveDown(){
+    console.log("movedown")
 }
