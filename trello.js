@@ -26,7 +26,7 @@ function addLane(){
         var lane = document.createElement('div');
         lane.setAttribute('class', 'list');
         lane.setAttribute("draggable", "true");
-        lane.innerHTML = `<div class ="listTitle">${laneName}</div>`+ `<button onclick="deleteCard(this, ${laneID})"><i class="far fa-trash-alt"></i></button>`+ `<button id="" onclick="moveLeft()" ><i class="fas fa-caret-left"></i></button>
+        lane.innerHTML = `<div class ="listTitle">${laneName}</div>`+ `<button onclick="deleteLane(this, ${laneID})"><i class="far fa-trash-alt"></i></button>`+ `<button id="" onclick="moveLeft()" ><i class="fas fa-caret-left"></i></button>
         <button id="" onclick="moveRight()" ><i class="fas fa-caret-right"></i></button><div class = "class" id="card-container-${laneID}"><input type = "text" id="lanecard${laneID}" name="cardtxt" placeholder="Add a card..."><button type="button" onclick="addCard(${laneID})">+</button></div>`
     
         document.getElementById("laneTitle").value="";
@@ -71,8 +71,20 @@ function addCard(laneID) {
 }
 
 function deleteCard(item, itemID){
-    item.parentElement.style.display = "none";
+    item.parentElement.parentElement.style.display = "none";
     item.parentElement.style.border = "0px solid black0"; //why doesn't this make borders disappear?
+}
+
+function deleteLane(item, itemID){
+    var decide;
+    var c =  confirm("Are you sure you want to delete this lane?");
+    if (c==true){
+        item.parentElement.style.display = "none";
+        item.parentElement.style.border = "0px solid black0"; //why doesn't this make borders disappear?
+    }
+    else {
+        console.log("do nothing")
+    }
 }
 
 function editTxt(item){
