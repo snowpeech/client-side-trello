@@ -1,27 +1,31 @@
 <html>
 	<head>
 		<title>Hello Trello</title>
+		<link href="https://fonts.googleapis.com/css?family=Nunito|Rubik" rel="stylesheet">
 		<link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 	</head>
 	<body>
-		<h1>Swim lanes & to-do cards</h1>
+		<h1 display="none">Swim lanes & to-do cards</h1>
 		
 		<div>
 			New lane (title): <input type = "text" id="laneTitle" onkeyup = "enterKey()" name="swimLane">
 			<button id="newLane" onclick="addLane()" >+</button>
 			<!-- <button id="" onclick="moveLeft()" ><i class="fas fa-caret-left"></i></button>
 			<button id="" onclick="moveRight()" ><i class="fas fa-caret-right"></i></button>
-			
+			<i class="fas fa-pencil-alt"></i>
 			<button onclick="moveUp()" ><i class="fas fa-caret-up"></i></button><button onclick="moveDown()" ><i class="fas fa-caret-down"></i></button> -->
-
+			
 
 		</div>
 		
 		<div id="pool">
+
+			
 			
 		</div>
+		Background vector created by <a href="https://www.freepik.com/free-photos-vectors/background">davidzydd</a>
 		
 		<script src="trello.js"></script>
 		<script>

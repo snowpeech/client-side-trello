@@ -1,11 +1,47 @@
+body, input {
+    font-family: 'Nunito', sans-serif;
+}
+
+p {
+    padding: 0px;
+    margin: 0px;
+}
+
+button {
+    border: none;
+    height: 25px;
+    width: 25px;
+    border-radius: 4px;
+    margin: 2px;
+    background: #969696;
+    color: white;
+    padding: 2px;
+}
+
+h1 {
+    font-size: 0;
+    width: 1px;
+    height: 1px;
+    display: inline-block;
+    overflow: hidden;
+    position: absolute!important;
+    border: 0!important;
+    padding: 0!important;
+    margin: 0!important;
+    clip: rect(1px,1px,1px,1px);
+}
+
 #pool{
     display:flex;
     overflow-x:scroll;
     border: solid 2px black;
-    background-color: rgb(187, 201, 226);
+    background-image: url("gray-squares.jpg");
+    background-size: cover;
+    padding: 10px;
     width: 99%;
     height: 98vh;
 }
+
 .lane {
     height: auto;
     min-width: 18rem;
@@ -19,11 +55,21 @@
 
 .card {
     /* flex-direction: row; */
-    border: 1px solid darkolivegreen;
+    /* border: 1px solid darkolivegreen;    */
+    font-family: 'Rubik', sans-serif;
+    font-size: small;
+    border-radius: 4px;
+    box-shadow: 5px 7px 40px -5px rgb(249, 214, 107) inset;
+    margin: 10px;
+    margin: 10px;
+    padding: 5px 8px;
+    /* background-color: rgba(239, 208, 136, 0.3); */
+    width: 15rem;
 }
 
-.list-title{
+.listTitle{
     font-weight: bold;
+    font-family: 'Nunito', sans-serif;
 }
 
 .kill {
