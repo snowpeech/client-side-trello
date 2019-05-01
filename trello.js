@@ -27,7 +27,7 @@ function addLane(){
         lane.setAttribute('class', 'list');
         lane.setAttribute("draggable", "true");
         lane.innerHTML = `<div class ="listTitle">${laneName}</div>`+ `<button onclick="deleteLane(this, ${laneID})"><i class="far fa-trash-alt"></i></button>`+ `<button id="" onclick="moveLeft()" ><i class="fas fa-caret-left"></i></button>
-        <button id="" onclick="moveRight()" ><i class="fas fa-caret-right"></i></button><div class = "class" id="card-container-${laneID}"><input type = "text" id="lanecard${laneID}" name="cardtxt" placeholder="Add a card..."><button type="button" onclick="addCard(${laneID})">+</button></div>`
+        <button id="" onclick="moveRight()" ><i class="fas fa-caret-right"></i></button><div class = "class" id="card-container-${laneID}"><input type = "text" id="lanecard${laneID}" name="cardtxt" placeholder="Add a card..."><button class="plusBtn" type="button" onclick="addCard(${laneID})"><i class="fas fa-plus"></i></button></div>`
     
         document.getElementById("laneTitle").value="";
         var list_container = document.querySelector("#pool");
@@ -40,7 +40,7 @@ function addLane(){
 function addCard(laneID) {
     
     cardID++; //this doesn't seem to work probably not finding actual cardID to update. because it lives inside this function and doesn't get returned
-
+    console.log(cardID)
     //var txtTitle = document.getElementById("lanecard`${laneID}`-`${cardID}`").value; //explain this later
     //get the swimlane id from the button that was clicked
     // let slid = this.dataset.laneId; 
@@ -58,7 +58,8 @@ function addCard(laneID) {
     div.setAttribute("draggable", "true");  
 
     var title = document.createElement("P");
-    title.innerHTML = txtTitle + `<button onclick="editTxt(this)"><i class="fas fa-pen"></i></button> <button onclick="deleteCard(this, ${cardID})"><i class="far fa-trash-alt"></i></button> <button onclick="moveUp()" ><i class="fas fa-caret-up"></i></button><button onclick="moveDown()" ><i class="fas fa-caret-down"></i></button>`;
+    title.id = `card-${cardID}-text`
+    title.innerHTML = `<div id="title-${cardID}">${txtTitle}</div>` + `<button onclick="editTxt(event, ${cardID})"><i class="fas fa-pen"></i></button> <button onclick="deleteCard(this, ${cardID})"><i class="far fa-trash-alt"></i></button> <button onclick="moveUp()" ><i class="fas fa-caret-up"></i></button><button onclick="moveDown()" ><i class="fas fa-caret-down"></i></button>`;
 
     div.appendChild(title);
 
@@ -72,7 +73,7 @@ function addCard(laneID) {
 
 function deleteCard(item, itemID){
     item.parentElement.parentElement.style.display = "none";
-    item.parentElement.style.border = "0px solid black0"; //why doesn't this make borders disappear?
+    
 }
 
 function deleteLane(item, itemID){
@@ -80,16 +81,59 @@ function deleteLane(item, itemID){
     var c =  confirm("Are you sure you want to delete this lane?");
     if (c==true){
         item.parentElement.style.display = "none";
-        item.parentElement.style.border = "0px solid black0"; //why doesn't this make borders disappear?
+        
     }
     else {
         console.log("do nothing")
     }
 }
 
-function editTxt(item){
-    console.log("edit text")
-    console.log(item.parentElement)
+function editTxt(e,cardID){
+    let buttonClicked = e.target.parentElement;    
+    
+    let cardContainer = buttonClicked.parentElement;
+    
+    let cardName = cardContainer.children[0];
+    // cardName.style.display = 'none'; //not yet
+
+    var newInput = document.createElement("input");
+    newInput.setAttribute("type","text");
+    newInput.setAttribute("id","editting")
+    
+    var editBtn = document.createElement("button");
+    editBtn.setAttribute("onclick",`grabText(this,${cardID})`);
+    editBtn.setAttribute('value','+');
+    editBtn.setAttribute('id','edittingbtn');
+
+    cardContainer.appendChild(newInput);
+    cardContainer.appendChild(editBtn);
+
+    // console.log(item.parentElement)
+    // console.log(item.previousElementSibling) // it works :D
+    
+    //var newIn = item.previousElementSibling.innerHTML;
+ }
+
+ function grabText(t,cardID){
+    console.log("parentel",t.parentElement)
+    console.log(cardID);
+    let newWords = document.getElementById("editting").value;
+    // document.getElementById("editting").value = "";
+    console.log(newWords);
+    // let target = t.parentElement.children[0].innerText;
+    let target = document.querySelector(`#title-${cardID}`);
+    console.dir(target);
+    target.innerText = newWords;
+
+    let del1 = document.getElementById("editting");
+    let del2 = document.getElementById("edittingbtn");
+    // console.log("del1:", del1)
+    // console.log("del2:",del2)
+    // del1.style.display = "none";
+    // del2.style.display = "none";
+    del1.parentNode.removeChild(del1);
+    del2.parentNode.removeChild(del2);
+
 }
 
 function moveLeft(){
