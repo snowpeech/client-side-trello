@@ -35,23 +35,13 @@ function addLane(){
         }
     }
 
-
-//add a card to swimlane
 function addCard(laneID) {
     
-    cardID++; //this doesn't seem to work probably not finding actual cardID to update. because it lives inside this function and doesn't get returned
-    console.log(cardID)
-    //var txtTitle = document.getElementById("lanecard`${laneID}`-`${cardID}`").value; //explain this later
-    //get the swimlane id from the button that was clicked
-    // let slid = this.dataset.laneId; 
+    cardID++; 
     var cardTxt = document.getElementById("lanecard"+laneID).value;
     var txtTitle = cardTxt; 
     document.getElementById("lanecard"+laneID).value ="";
-    //var txtTitle = prompt("Name your card:"); // need to pull this somewhere else
     
-    //	add a name to the card
-    //	add a description to the card
-
     var div = document.createElement("div");
     div.setAttribute("id", "card" + cardID); 
     div.setAttribute("class", "card");
@@ -62,8 +52,6 @@ function addCard(laneID) {
     title.innerHTML = `<div id="title-${cardID}">${txtTitle}</div>` + `<button onclick="editTxt(event, ${cardID})"><i class="fas fa-pen"></i></button> <button onclick="deleteCard(this, ${cardID})"><i class="far fa-trash-alt"></i></button> <button onclick="moveUp()" ><i class="fas fa-caret-up"></i></button><button onclick="moveDown()" ><i class="fas fa-caret-down"></i></button>`;
 
     div.appendChild(title);
-
-    console.log(laneID)
 
     let swimlane = document.querySelector("#card-container-" + laneID );
     swimlane.appendChild(div);
@@ -89,35 +77,38 @@ function deleteLane(item, itemID){
 }
 
 function editTxt(e,cardID){
+    let editCheck = document.getElementById(`editting-${cardID}`);
+    console.log(editCheck)
+    if (editCheck){
+        console.log("already exists")
+    }
+    else {
+        console.log("proceed to create edit field")
+
     let buttonClicked = e.target.parentElement;    
     
     let cardContainer = buttonClicked.parentElement;
     
     let cardName = cardContainer.children[0];
-    // cardName.style.display = 'none'; //not yet
-
+    
     var newInput = document.createElement("input");
     newInput.setAttribute("type","text");
-    newInput.setAttribute("id","editting")
+    newInput.setAttribute("id",`editting-${cardID}`)
     
     var editBtn = document.createElement("button");
     editBtn.setAttribute("onclick",`grabText(this,${cardID})`);
     editBtn.setAttribute('value','+');
-    editBtn.setAttribute('id','edittingbtn');
+    editBtn.setAttribute('id',`edittingbtn-${cardID}`);
 
     cardContainer.appendChild(newInput);
     cardContainer.appendChild(editBtn);
-
-    // console.log(item.parentElement)
-    // console.log(item.previousElementSibling) // it works :D
-    
-    //var newIn = item.previousElementSibling.innerHTML;
+    }
  }
 
  function grabText(t,cardID){
     console.log("parentel",t.parentElement)
     console.log(cardID);
-    let newWords = document.getElementById("editting").value;
+    let newWords = document.getElementById(`editting-${cardID}`).value;//need to update here with cardID
     // document.getElementById("editting").value = "";
     console.log(newWords);
     // let target = t.parentElement.children[0].innerText;
@@ -125,8 +116,8 @@ function editTxt(e,cardID){
     console.dir(target);
     target.innerText = newWords;
 
-    let del1 = document.getElementById("editting");
-    let del2 = document.getElementById("edittingbtn");
+    let del1 = document.getElementById(`editting-${cardID}`);
+    let del2 = document.getElementById(`edittingbtn-${cardID}`);
     // console.log("del1:", del1)
     // console.log("del2:",del2)
     // del1.style.display = "none";
